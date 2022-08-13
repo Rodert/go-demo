@@ -7,6 +7,19 @@
 2. encode
 3. decode
 
+## 命令
+
+cmd执行
+
+```bash
+
+set GOOS=linux
+
+go env
+
+go build gindemo.go
+
+```
 
 ## TODO
 
