@@ -43,13 +43,15 @@ func main() {
 		}
 	})
 
-	//dis var
+	//dis var。路由配置，处理字符串。
 	v1 := router.Group("/dis_var")
 	{
 		v1.GET("encode", my_encode_router)
+		v1.GET("decode", my_decode_router)
+		v1.GET("base64", my_base64_router)
 	}
 
-	//upload file，performability 20220813
+	//upload file，performability。上传文件并存储到指定位置
 	router.MaxMultipartMemory = 8 << 20 // 8 MiB
 	router.POST("/upload", func(c *gin.Context) {
 		// single file
@@ -63,27 +65,57 @@ func main() {
 	router.Run(":8090")
 }
 
-func my_encode(s string) string {
-	input := []byte(s)
-
-	encodeString := base64.StdEncoding.EncodeToString(input)
-	// fmt.Println(encodeString)
-
-	return encodeString
-}
-
+//encode编码
 func my_encode_router(c *gin.Context) {
 	q, ok := c.GetQuery("q")
 	if ok {
 		c.JSON(http.StatusOK, gin.H{
-			"你的输入是:":    q,
-			q + " 编码是:": my_encode(q),
+			"你的输入是:": q,
+			"编码是:":   my_encode(q),
 		})
 	} else {
 		c.JSON(http.StatusOK, gin.H{
 			"你的输入不合法": "输入合法字符",
 		})
 	}
+}
+
+//decode字符串解码
+func my_decode_router(c *gin.Context) {
+	q, ok := c.GetQuery("q")
+	if ok {
+		c.JSON(http.StatusOK, gin.H{
+			"你的输入是:": q,
+			"解码是:":   my_decode(q),
+		})
+	} else {
+		c.JSON(http.StatusOK, gin.H{
+			"你的输入不合法": "输入合法字符",
+		})
+	}
+}
+
+//base64加密
+func my_base64_router(c *gin.Context) {
+	q, ok := c.GetQuery("q")
+	if ok {
+		c.JSON(http.StatusOK, gin.H{
+			"你的输入是:":        q,
+			"base64加密后结果是:": my_base64(q),
+		})
+	} else {
+		c.JSON(http.StatusOK, gin.H{
+			"你的输入不合法": "输入合法字符",
+		})
+	}
+}
+
+func my_encode(s string) string {
+	input := []byte(s)
+
+	encodeString := base64.StdEncoding.EncodeToString(input)
+	// fmt.Println(encodeString)
+	return encodeString
 }
 
 func my_decode(s string) []byte {
@@ -94,7 +126,6 @@ func my_decode(s string) []byte {
 		log.Fatalln(err)
 	}
 	// fmt.Println(string(decodeBytes))
-
 	return decodeBytes
 }
 
