@@ -33,3 +33,5 @@ go build gindemo.go
 搭建gin脚手架，也就是编码规范参考
 
 https://blog.csdn.net/yhflyl/article/details/117635901
+
+https://blog.csdn.net/jziwjxjd/article/details/122218785
