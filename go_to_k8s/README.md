@@ -23,3 +23,6 @@ del hyper-v.txt
 Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL
 ```
 
+
+如果不能直接安装，使用克隆方式试试：https://blog.csdn.net/weixin_41915314/article/details/113619475
+
