@@ -23,8 +23,8 @@ func main() {
 	defer cli.Close() // 确保在函数结束时关闭连接
 
 	// 设置键值对
-	key := "mykey"
-	value := "myvalue"
+	key := "name"
+	value := "javapub"
 	putResp, err := cli.Put(context.Background(), key, value)
 	if err != nil {
 		log.Fatal(err)
