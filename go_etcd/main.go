@@ -1,3 +1,11 @@
+/*
+ * @Author: JavaPub
+ * @Date: 2024-07-07 11:31:28
+ * @LastEditors: your name
+ * @LastEditTime: 2024-07-07 12:12:04
+ * @Description: Here is the JavaPub code base. Search JavaPub on the whole web.
+ * @FilePath: /go_etcd/main.go
+ */
 package main
 
 import (
@@ -23,7 +31,7 @@ func main() {
 	defer cli.Close() // 确保在函数结束时关闭连接
 
 	// 设置键值对
-	key := "name"
+	key := "name2"
 	value := "javapub"
 	putResp, err := cli.Put(context.Background(), key, value)
 	if err != nil {
