@@ -1,5 +1,12 @@
 # go-demo
-java转行golang练手工程，基于go mod
+
+GoLang 整合代码案例仓库。
+
+
+
+
+
+[作者](http://javapub.net.cn/)
 
 
 ---
